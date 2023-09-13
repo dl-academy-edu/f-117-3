@@ -1,13 +1,15 @@
 (function() {
+    // получение элементов с формы
     const form = document.forms.signIn;
+    // проверка наличия формы в верстке
     if(!form) return;
-
+    // слушатель события submit
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-
-        const userEmail = form.element.email;
-        const userPassword = form.element.password;
-
+        // получаем элемент формы
+        const userEmail = form.elements.email;
+        const userPassword = form.elements.password;
+        // создаём объект дата для имитации отправки
         const data = {
             email: userEmail.value,
             password: userPassword.value,
@@ -15,10 +17,10 @@
         console.log(data)
     })
 })()
-
+// функция собирает все данные с формы
 function getAll(form) {
-    const inputs = form.querySelectorAll('input');
-    const textareas = form.querySelectorAll('textarea');
+    const inputs = form.querySelectorAll('input'); // получаем псевдомассив инпутов
+    const textareas = form.querySelectorAll('textarea'); // получаем псевдомассив textarea
     let result = {};
     for(let input of inputs) {
         switch (input.type) {
@@ -44,7 +46,7 @@ function getAll(form) {
         }
     }
     for(let textarea of textareas) {
-        result[textarea.name]
+        result[textarea.name] = textarea.value;
     }
 
     return result;
@@ -72,11 +74,11 @@ function setErrorChecked(inputs, messageError) {
 
             input.classList.remove('is-invalid');
         }
-        for(let input of [...inputs]) {
-            input.classList.add('is-invalid');
+    }
+    for(let input of [...inputs]) {
+        input.classList.add('is-invalid');
 
-            input.addEventListener('input', handler)
-        }
+        input.addEventListener('input', handler)
     }
 }
 
@@ -87,7 +89,7 @@ function setErrorText(input, messageError) {
     input.addEventListener('input', () => {
         error.remove()
         input.classList.remove('is-invalid')
-    })
+    }, {once: true}); // выполнение события один раз
 }
 
 function errorCreator(message) {
