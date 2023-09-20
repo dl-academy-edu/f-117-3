@@ -89,22 +89,22 @@
 // let qwe = "a".localeCompare("Z"); 
 // console.log(qwe)
 
-// const peopleWaiting = ['Кристина', 'Олег', 'Кирилл', 'Мария', 'Светлана', 'Артем', 'Глеб'];
+const peopleWaiting = ['Кристина', 'Олег', 'Кирилл', 'Мария', 'Светлана', 'Артем', 'Глеб'];
 
-// const giveParcel = () => {
-//     const clientName = peopleWaiting.shift()
-//     alert(`${clientName} получил(а) посылку. В очереди осталось ${peopleWaiting.length} человек.`)
-// }
+const giveParcel = () => {
+    const clientName = peopleWaiting.shift()
+    console.log(`${clientName} получил(а) посылку. В очереди осталось ${peopleWaiting.length} человек.`)
+}
 
-// const leaveQueueWithoutParcel = () => {
-//     const clientName = peopleWaiting.shift()
-//     alert(`${clientName} не получил(а) посылку и ушел(ла) из очереди`)
-// }
+const leaveQueueWithoutParcel = () => {
+    const clientName = peopleWaiting.shift()
+    console.log(`${clientName} не получил(а) посылку и ушел(ла) из очереди`)
+}
 
-// giveParcel()
-// giveParcel()
-// giveParcel()
+giveParcel()
+giveParcel()
+giveParcel()
 
-// for (let i = peopleWaiting.length; i > 0; --i) {
-//     leaveQueueWithoutParcel()
-// }
+for (let i = peopleWaiting.length; i > 0; --i) {
+    leaveQueueWithoutParcel()
+}
